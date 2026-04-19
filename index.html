@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shreyas Dhumal | Cloud & DevOps Engineer</title>
+  <meta name="description" content="Cloud and DevOps-focused Computer Engineering student. AWS Certified. Building scalable infrastructure and high-availability systems." />
+  <meta name="author" content="Shreyas Dhumal" />
+  <meta property="og:title" content="Shreyas Dhumal | Cloud & DevOps Engineer" />
+  <meta property="og:description" content="Cloud and DevOps-focused Computer Engineering student. AWS Certified. Building scalable infrastructure and high-availability systems." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=DM+Sans:opsz,wght@9..40,100..900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ─── CUSTOM CURSOR ─── -->
+  <div class="you-cur" id="youCur">
+    <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+      <path d="M5.4 1.2L17.3 8.8C18.2 9.3 18.2 10.7 17.3 11.2L5.4 18.8C4.4 19.4 3.1 18.7 3.1 17.5V2.5C3.1 1.3 4.4 0.6 5.4 1.2Z" fill="#a78bfa"/>
+    </svg>
+    <span class="you-tag" id="youTag">View</span>
+  </div>
+
+  <!-- ─── GRAIN OVERLAY ─── -->
+  <canvas class="grain-canvas" id="grainCanvas"></canvas>
+
+  <!-- ─── SITE LOADER ─── -->
+  <div class="site-loader" id="siteLoader">
+    <div class="site-loader__counter" id="loaderCounter">0</div>
+  </div>
+
+  <!-- ─── HEADER ─── -->
+  <header class="hdr" id="mainHeader">
+    <div class="hdr__name"><a href="#">SHREYAS DHUMAL</a></div>
+    <div class="hdr__clock" id="headerClock"></div>
+    <nav class="hdr__nav">
+      <a href="#work">WORK</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+      <a href="Updated-Resume-Shreyas.pdf" class="hdr__resume-btn">RESUME</a>
+    </nav>
+    <button class="hdr__burger" id="burger" aria-label="Menu">
+      <span class="hdr__burger-text">Menu</span>
+      <div class="hdr__burger-icon">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
+  </header>
+
+  <!-- ─── MOBILE MENU ─── -->
+  <div class="mob-menu" id="mobMenu">
+    <a href="#work" class="mob-link">Work</a>
+    <a href="#about" class="mob-link">About</a>
+    <a href="#contact" class="mob-link">Contact</a>
+    <a href="Updated-Resume-Shreyas.pdf" class="mob-link">Resume</a>
+  </div>
+
+  <!-- ─── APP ─── -->
+  <div class="app">
+
+    <!-- ═══════ HERO ═══════ -->
+    <section class="hero-section" id="heroSection">
+      <div class="camera-track" id="cameraTrack">
+        <div class="artboard hero-artboard" id="heroArtboard">
+
+          <!-- Ethereal Shadow Background -->
+          <div class="ethereal-shadow" id="etherealShadow">
+            <svg style="position:absolute;width:0;height:0">
+              <defs>
+                <filter id="etherealFilter">
+                  <feTurbulence
+                    result="undulation"
+                    numOctaves="2"
+                    baseFrequency="0.0003,0.002"
+                    seed="0"
+                    type="turbulence"
+                  />
+                  <feColorMatrix
+                    id="etherealHueRotate"
+                    in="undulation"
+                    type="hueRotate"
+                    values="180"
+                  />
+                  <feColorMatrix
+                    in="dist"
+                    result="circulation"
+                    type="matrix"
+                    values="4 0 0 0 1  4 0 0 0 1  4 0 0 0 1  1 0 0 0 0"
+                  />
+                  <feDisplacementMap
+                    in="SourceGraphic"
+                    in2="circulation"
+                    scale="80"
+                    result="dist"
+                  />
+                  <feDisplacementMap
+                    in="dist"
+                    in2="undulation"
+                    scale="80"
+                    result="output"
+                  />
+                </filter>
+              </defs>
+            </svg>
+            <div class="ethereal-inner" id="etherealInner">
+              <div class="ethereal-color"></div>
+            </div>
+            <div class="ethereal-noise"></div>
+          </div>
+
+          <canvas class="hero-canvas-grid" id="heroGrid"></canvas>
+
+          <div class="hero-glow hero-glow--top"></div>
+          <div class="hero-glow hero-glow--bottom"></div>
+
+          <!-- Selection box around title -->
+          <div class="asel-hero" id="aselHero">
+            <div class="asel-hero-lbl">h1 / Title</div>
+            <div class="asel-hero-handle h-tl"></div>
+            <div class="asel-hero-handle h-tr"></div>
+            <div class="asel-hero-handle h-bl"></div>
+            <div class="asel-hero-handle h-br"></div>
+          </div>
+
+          <!-- Drag selection box -->
+          <div class="you-sel" id="youSel">
+            <div class="you-sel-lbl">DRAG TO MOVE</div>
+          </div>
+
+          <!-- Toast tooltip -->
+          <div class="toast-hero" id="toastHero">
+            <div class="toast-hero-inner">
+              <span class="toast-hero-prop">x</span>
+              <span class="toast-hero-arrow">→</span>
+              <span class="toast-hero-val" id="toastX">0</span>
+              <span class="toast-hero-prop" style="margin-left:8px">y</span>
+              <span class="toast-hero-arrow">→</span>
+              <span class="toast-hero-val" id="toastY">0</span>
+            </div>
+          </div>
+
+          <!-- Figma cursor -->
+          <div class="ac-hero" id="acHero">
+            <svg width="16" height="22" viewBox="0 0 16 22" fill="none">
+              <path d="M0 0L16 12H6L0 22V0Z" fill="#a78bfa"/>
+            </svg>
+            <span class="ac-hero-tag">Shreyas D.</span>
+          </div>
+
+          <!-- Figma comment bubble -->
+          <div class="figma-comment" id="figmaComment">
+            Building cloud-native systems<span class="chat-cursor"></span>
+          </div>
+
+          <!-- Hero content -->
+          <div class="hero-ic">
+            <div class="hero-ic-wrap">
+              <span class="hero-ic-eye" id="heroEye">ENGINEERING THE CLOUD, CONTAINER BY CONTAINER.</span>
+
+              <div class="mask-wrap">
+                <h1 class="drag-text" id="dragName1">SHREYAS</h1>
+              </div>
+              <br/>
+              <div class="mask-wrap">
+                <h1 class="drag-text outline" id="dragName2">DHUMAL</h1>
+              </div>
+
+              <div class="hero-ic-sub" id="heroSub">
+                Cloud &amp; DevOps Engineer · AWS Certified<span class="ghost-cursor"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ INTRO STATEMENTS ═══════ -->
+    <section class="intro-panels" id="introSection">
+      <div class="intro-pin">
+        <div class="intro-panel" id="introPanel0" data-idx="0">
+          <div class="intro-panel__inner">
+            <span class="intro-panel__num">01</span>
+            <p class="intro-panel__text" id="introText0"></p>
+          </div>
+        </div>
+        <div class="intro-panel" id="introPanel1" data-idx="1" style="opacity:0">
+          <div class="intro-panel__inner">
+            <span class="intro-panel__num">02</span>
+            <p class="intro-panel__text" id="introText1"></p>
+          </div>
+        </div>
+        <div class="intro-panel" id="introPanel2" data-idx="2" style="opacity:0">
+          <div class="intro-panel__inner">
+            <span class="intro-panel__num">03</span>
+            <p class="intro-panel__text" id="introText2"></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="intro-asel" id="introAsel">
+        <div class="intro-asel-lbl">p / Statement</div>
+        <div class="intro-asel-handle h-tl"></div>
+        <div class="intro-asel-handle h-tr"></div>
+        <div class="intro-asel-handle h-bl"></div>
+        <div class="intro-asel-handle h-br"></div>
+      </div>
+      <div class="intro-ac" id="introAc">
+        <svg width="16" height="22" viewBox="0 0 16 22" fill="none">
+          <path d="M0 0L16 12H6L0 22V0Z" fill="#a78bfa"/>
+        </svg>
+        <span class="intro-ac-tag">Shreyas D.</span>
+      </div>
+    </section>
+
+    <!-- ═══════ FEATURED WORK ═══════ -->
+    <section class="fw-section" id="work">
+      <div class="fw-intro">
+        <div class="ww__hdr">
+          <h2 class="ww__title reveal">Featured Work</h2>
+          <span class="ww__meta reveal rd1">Selected Projects</span>
+        </div>
+      </div>
+
+      <div class="fw-deck" id="fwDeck">
+
+        <!-- Card 1 — FanForge -->
+        <div class="fw-card-wrapper" data-card="0">
+          <div class="fw-card">
+            <div class="fw-card__content">
+              <div class="fw-card__top">
+                <div class="fw-card__company">FanForge <span class="fw-card__sep"></span> Web3 / Blockchain</div>
+                <h3 class="fw-card__title">Decentralized Creator × Fan Economy Platform</h3>
+                <p class="fw-card__vision">Built on Algorand — on-chain tipping, creator-issued NFTs, and transparent blockchain ownership powering a new decentralized fan economy.</p>
+              </div>
+              <div class="fw-card__bottom">
+                <div class="fw-card__metrics">
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">1st</span>
+                    <span class="fw-metric__lbl">Best Web3 Project</span>
+                  </div>
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">RIFT</span>
+                    <span class="fw-metric__lbl">Hackathon Winner</span>
+                  </div>
+                </div>
+                <a href="https://github.com/shreyaaassss/FanForge-Platform" target="_blank" class="fw-card__cta">
+                  VIEW ON GITHUB
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="fw-card__visual">
+              <div class="fw-cinema-frame">
+                <div class="fw-cinema-img">
+                  <img src="fanforge.png" alt="FanForge Platform" />
+                </div>
+              </div>
+              <div class="fw-cinema-corners"></div>
+              <div class="fw-card__tags">
+                <span class="fw-tech-tag">Algorand</span>
+                <span class="fw-tech-tag">Python</span>
+                <span class="fw-tech-tag">Web3</span>
+                <span class="fw-tech-tag">NFTs</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2 — Cadencia -->
+        <div class="fw-card-wrapper" data-card="1">
+          <div class="fw-card">
+            <div class="fw-card__content">
+              <div class="fw-card__top">
+                <div class="fw-card__company">Cadencia <span class="fw-card__sep"></span> FinTech / A2A</div>
+                <h3 class="fw-card__title">Agent-to-Agent FX Settlement Platform</h3>
+                <p class="fw-card__vision">Full-stack financial platform with Algorand escrow contracts, real-time FX matching, and Docker-orchestrated microservices for seamless cross-border settlements.</p>
+              </div>
+              <div class="fw-card__bottom">
+                <div class="fw-card__metrics">
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">A2A</span>
+                    <span class="fw-metric__lbl">Settlement Protocol</span>
+                  </div>
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">Docker</span>
+                    <span class="fw-metric__lbl">Containerized Deploy</span>
+                  </div>
+                </div>
+                <a href="https://github.com/shreyaaassss/Cadencia-A2A-Platform" target="_blank" class="fw-card__cta">
+                  VIEW ON GITHUB
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="fw-card__visual">
+              <div class="fw-cinema-frame">
+                <div class="fw-cinema-img">
+                  <img src="cadencia.png" alt="Cadencia A2A Platform" />
+                </div>
+              </div>
+              <div class="fw-cinema-corners"></div>
+              <div class="fw-card__tags">
+                <span class="fw-tech-tag">Python</span>
+                <span class="fw-tech-tag">FastAPI</span>
+                <span class="fw-tech-tag">Docker</span>
+                <span class="fw-tech-tag">Algorand</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3 — Fresh Scan Smart Inventory -->
+        <div class="fw-card-wrapper" data-card="2">
+          <div class="fw-card">
+            <div class="fw-card__content">
+              <div class="fw-card__top">
+                <div class="fw-card__company">Fresh Scan <span class="fw-card__sep"></span> IoT / Cloud</div>
+                <h3 class="fw-card__title">Smart Fridge Inventory Management System</h3>
+                <p class="fw-card__vision">Cloud-connected IoT system integrating Raspberry Pi with backend APIs, containerized services, and real-time inventory tracking with AWS deployment.</p>
+              </div>
+              <div class="fw-card__bottom">
+                <div class="fw-card__metrics">
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">3rd</span>
+                    <span class="fw-metric__lbl">Innovate Expo 2025</span>
+                  </div>
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">300+</span>
+                    <span class="fw-metric__lbl">Teams Competed</span>
+                  </div>
+                </div>
+                <a href="https://github.com/shreyaaassss/Fresh-Scan-Smart-Inventory" target="_blank" class="fw-card__cta">
+                  VIEW ON GITHUB
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="fw-card__visual">
+              <div class="fw-cinema-frame">
+                <div class="fw-cinema-img">
+                  <img src="fresh-scan-smart fridge .png" alt="Fresh Scan Smart Inventory" />
+                </div>
+              </div>
+              <div class="fw-cinema-corners"></div>
+              <div class="fw-card__tags">
+                <span class="fw-tech-tag">Raspberry Pi</span>
+                <span class="fw-tech-tag">Flask</span>
+                <span class="fw-tech-tag">MongoDB</span>
+                <span class="fw-tech-tag">AWS</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4 — Niramay Clinic -->
+        <div class="fw-card-wrapper" data-card="3">
+          <div class="fw-card">
+            <div class="fw-card__content">
+              <div class="fw-card__top">
+                <div class="fw-card__company">Niramay Clinic <span class="fw-card__sep"></span> Healthcare</div>
+                <h3 class="fw-card__title">Digital Healthcare Clinic Management Platform</h3>
+                <p class="fw-card__vision">End-to-end clinic management solution with patient records, appointment scheduling, and streamlined healthcare workflow digitization.</p>
+              </div>
+              <div class="fw-card__bottom">
+                <div class="fw-card__metrics">
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">Full</span>
+                    <span class="fw-metric__lbl">Stack Application</span>
+                  </div>
+                  <div class="fw-metric">
+                    <span class="fw-metric__val">HTML</span>
+                    <span class="fw-metric__lbl">Frontend Built</span>
+                  </div>
+                </div>
+                <a href="https://github.com/shreyaaassss/Niramay-Clinic" target="_blank" class="fw-card__cta">
+                  VIEW ON GITHUB
+                  <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8H13M13 8L8 3M13 8L8 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="fw-card__visual">
+              <div class="fw-cinema-frame">
+                <div class="fw-cinema-img">
+                  <img src="niramay-medical-project.png" alt="Niramay Clinic" />
+                </div>
+              </div>
+              <div class="fw-cinema-corners"></div>
+              <div class="fw-card__tags">
+                <span class="fw-tech-tag">HTML</span>
+                <span class="fw-tech-tag">CSS</span>
+                <span class="fw-tech-tag">JavaScript</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress pips -->
+      <div class="fw-progress" id="fwProgress">
+        <div class="fw-pip fw-pip--active" data-pip="0"></div>
+        <div class="fw-pip" data-pip="1"></div>
+        <div class="fw-pip" data-pip="2"></div>
+        <div class="fw-pip" data-pip="3"></div>
+      </div>
+    </section>
+
+    <!-- ═══════ SKILLS MARQUEE ═══════ -->
+    <section class="skills-section">
+      <div class="skills-marquee">
+        <div class="skills-track">
+          <span class="skill-item">AWS</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Docker</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Google Cloud</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">CI/CD</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">FastAPI</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">MongoDB</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Algorand</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Linux</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">C++</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">GitHub Actions</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Microservices</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">REST APIs</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Flask</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">IoT</span>
+          <span class="skill-dot">·</span>
+          <!-- Duplicate for seamless loop -->
+          <span class="skill-item">AWS</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Docker</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Google Cloud</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">CI/CD</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">FastAPI</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Python</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">PostgreSQL</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">MongoDB</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Algorand</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Linux</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">C++</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">GitHub Actions</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Microservices</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">REST APIs</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">Flask</span>
+          <span class="skill-dot">·</span>
+          <span class="skill-item">IoT</span>
+          <span class="skill-dot">·</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ ABOUT TEASER ═══════ -->
+    <section class="about-teaser" id="about">
+      <div class="container">
+        <h2 class="at-heading reveal">THE ENGINEER<br/>BEHIND THE CODE.</h2>
+        <p class="at-body reveal rd1">B.Tech Computer Engineering at Wadia College, Pune · CGPA 8.9 · AWS Certified Solutions Architect · Building resilient cloud infrastructure and high-availability systems.</p>
+
+        <div class="at-certs reveal rd2">
+          <div class="cert-badge">
+            <span class="cert-icon">▲</span>
+            <span class="cert-text">AWS Solutions Architect</span>
+          </div>
+          <div class="cert-badge">
+            <span class="cert-icon">◆</span>
+            <span class="cert-text">Cyber Security Fundamentals</span>
+          </div>
+          <div class="cert-badge">
+            <span class="cert-icon">◉</span>
+            <span class="cert-text">DSA in C++</span>
+          </div>
+        </div>
+
+        <div class="at-achievements reveal rd2" style="margin-top: 48px;">
+          <p class="at-ach-title">ACHIEVEMENTS</p>
+          <div class="at-ach-grid">
+            <div class="at-ach-item">
+              <span class="at-ach-icon">01</span>
+              <span class="at-ach-label">Best Web3 Project — RIFT Hackathon</span>
+            </div>
+            <div class="at-ach-item">
+              <span class="at-ach-icon">02</span>
+              <span class="at-ach-label">3rd Prize — Innovate Expo 2025</span>
+            </div>
+            <div class="at-ach-item">
+              <span class="at-ach-icon">03</span>
+              <span class="at-ach-label">2nd Prize — Python Coding Competition</span>
+            </div>
+            <div class="at-ach-item">
+              <span class="at-ach-icon">04</span>
+              <span class="at-ach-label">Invited by IIT Bombay E-Cell — Eureka</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ 3D CONTACT SECTION ═══════ -->
+    <section class="bot-contact-section" id="contact">
+      <!-- Spotlight gradient -->
+      <div class="bot-spotlight"></div>
+
+      <div class="bot-contact-inner">
+        <!-- Left links -->
+        <div class="bot-links bot-links--left reveal">
+          <a href="mailto:shreyasdhumal2004@gmail.com" class="bot-link-card">
+            <div class="bot-link-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 7L2 7"/></svg>
+            </div>
+            <div class="bot-link-info">
+              <span class="bot-link-label">Email</span>
+              <span class="bot-link-value">shreyasdhumal2004@gmail.com</span>
+            </div>
+          </a>
+          <a href="https://github.com/shreyaaassss" target="_blank" class="bot-link-card">
+            <div class="bot-link-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            </div>
+            <div class="bot-link-info">
+              <span class="bot-link-label">GitHub</span>
+              <span class="bot-link-value">shreyaaassss</span>
+            </div>
+          </a>
+        </div>
+
+        <!-- Center heading -->
+        <div class="bot-center-text">
+          <h2 class="bot-heading">LET'S CONNECT</h2>
+          <p class="bot-subtext">Ready to build something great together.</p>
+        </div>
+
+        <!-- Right links -->
+        <div class="bot-links bot-links--right reveal rd1">
+          <a href="https://www.linkedin.com/in/shreyas-dhumal-21074a1b1/" target="_blank" class="bot-link-card">
+            <div class="bot-link-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </div>
+            <div class="bot-link-info">
+              <span class="bot-link-label">LinkedIn</span>
+              <span class="bot-link-value">Shreyas Dhumal</span>
+            </div>
+          </a>
+          <a href="https://www.instagram.com/shreeyaasaa" target="_blank" class="bot-link-card">
+            <div class="bot-link-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/></svg>
+            </div>
+            <div class="bot-link-info">
+              <span class="bot-link-label">Instagram</span>
+              <span class="bot-link-value">@shreeyaasaa</span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════ FOOTER ═══════ -->
+    <footer class="site-footer-mini">
+      <div class="container">
+        <span class="ft-copyright">© 2026 Shreyas Dhumal — Built with precision.</span>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <script src="script.js"></script>
+</body>
+</html>
